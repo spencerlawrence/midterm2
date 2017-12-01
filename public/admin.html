@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Midterm #2</title>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  	<script src="javascripts/app.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="shopping" ng-controller="MainCtrl">
+	<h1>Store Management Interface</h1>
+	<form ng-submit="addItem()">
+		<input type="text" placeholder="Enter New Item" ng-model="formContent">
+		<input type="text" placeholder="Enter price" ng-model="pricing">
+		<input type="url" placeholder="Enter picture URL" ng-model="url">
+		<input type="submit" value="Submit">
+	</form>
+	<h1>Current Products</h1>
+	<div ng-repeat="item in items | orderBy:['name']">
+	<span class="glyphicon glyphicon-remove" ng-click="delete(item)"></span>
+	{{item.name}} - price {{item.price}} - ordered {{item.quantity}}
+	<img class='avatar' style='max-width: 100px'  ng-src='{{item.image}}'/>
+	</div>
+</body>
+</html>
